@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactNode } from "react";
+import { useState, useEffect, ReactNode, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import {
   Moon,
@@ -11,15 +11,15 @@ import {
   Mail,
 } from "lucide-react";
 
-// Define valid directions as a type
+// Define direction type to ensure type safety
 type AnimationDirection = "up" | "down" | "left" | "right";
 
 // Animation utility for entry animations
-interface AnimatedEntryProps {
+type AnimatedEntryProps = {
   children: ReactNode;
   delay?: number;
   direction?: AnimationDirection;
-}
+};
 
 const AnimatedEntry = ({
   children,
@@ -55,45 +55,89 @@ const AnimatedEntry = ({
 
 // Theme Toggle Component
 const ThemeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  // 'system', 'dark', or 'light'
+  type ThemeType = "system" | "dark" | "light";
+  const [theme, setTheme] = useState<ThemeType>("system");
 
-  useEffect(() => {
-    // Check system preference on initial load
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    setIsDarkMode(prefersDark);
-    document.documentElement.classList.toggle("dark", prefersDark);
+  // Apply theme based on current setting
+  const applyTheme = useCallback((newTheme: ThemeType) => {
+    // If system preference, check what system prefers
+    if (newTheme === "system") {
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      document.documentElement.classList.toggle("dark", prefersDark);
+    } else {
+      document.documentElement.classList.toggle("dark", newTheme === "dark");
+    }
   }, []);
 
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark");
+  useEffect(() => {
+    // Check if theme is stored in localStorage
+    const savedTheme = localStorage.getItem("theme") || "system";
+    setTheme(savedTheme as ThemeType);
+    applyTheme(savedTheme as ThemeType);
+
+    // Add listener for system preference changes
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = () => {
+      if (theme === "system") {
+        applyTheme("system");
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, [theme, applyTheme]);
+
+  const setThemeWithSave = (newTheme: ThemeType) => {
+    localStorage.setItem("theme", newTheme);
+    setTheme(newTheme);
+    applyTheme(newTheme);
+  };
+
+  // Toggle between themes cyclically: system -> light -> dark -> system
+  const cycleTheme = () => {
+    const themes: ThemeType[] = ["system", "light", "dark"];
+    const currentIndex = themes.indexOf(theme);
+    const nextIndex = (currentIndex + 1) % themes.length;
+    setThemeWithSave(themes[nextIndex]);
   };
 
   return (
-    <button
-      onClick={toggleTheme}
-      className="p-2 rounded-full bg-background hover:bg-muted transition-colors"
-      aria-label="Toggle theme"
-    >
-      {isDarkMode ? (
-        <Sun className="h-5 w-5 text-yellow-400" />
-      ) : (
-        <Moon className="h-5 w-5 text-slate-700" />
-      )}
-    </button>
+    <div className="relative">
+      <button
+        onClick={cycleTheme}
+        className="p-2 rounded-full bg-background hover:bg-muted transition-colors"
+        aria-label="Toggle theme"
+      >
+        {theme === "dark" ? (
+          <Moon className="h-5 w-5 text-teal-400" />
+        ) : theme === "light" ? (
+          <Sun className="h-5 w-5 text-yellow-500" />
+        ) : (
+          <div className="h-5 w-5 relative">
+            <Sun className="h-5 w-5 text-yellow-500 absolute opacity-50" />
+            <Moon className="h-5 w-5 text-teal-500 absolute opacity-50" />
+          </div>
+        )}
+      </button>
+
+      <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">
+        {theme === "system" ? "System" : theme === "dark" ? "Dark" : "Light"}
+      </span>
+    </div>
   );
 };
 
 // NavBar Components with hover effects
-interface NavItemProps {
+type NavItemProps = {
   active: boolean;
   onClick: () => void;
   children: ReactNode;
   icon: ReactNode;
   delay?: number;
-}
+};
 
 const NavItem = ({
   active,
@@ -218,18 +262,18 @@ const PatrikSection = () => {
   );
 };
 
-// Project interface definition
-interface Project {
+// Project card type definitions
+type ProjectType = {
   title: string;
   description: string;
   tags: string[];
   image: string;
-}
+};
 
-interface ProjectCardProps {
-  project: Project;
+type ProjectCardProps = {
+  project: ProjectType;
   index: number;
-}
+};
 
 const ProjectCard = ({ project, index }: ProjectCardProps) => {
   return (
