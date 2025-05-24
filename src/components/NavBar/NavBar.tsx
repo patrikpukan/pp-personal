@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { cn } from "@/lib/utils"; // Assuming you have a utils file for cn
-import { Home, Briefcase, User, FileText } from "lucide-react"; // Assuming lucide-react for icons
+import { Briefcase, User, FileText } from "lucide-react"; // Assuming lucide-react for icons
 
 // Define direction type to ensure type safety - Copied from App.tsx, consider moving to a types file
 type AnimationDirection = "up" | "down" | "left" | "right";

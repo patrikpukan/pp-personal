@@ -6,8 +6,8 @@ import {
   FileText,
   Github,
   ExternalLink,
-  Linkedin,
-  Twitter,
+  //Linkedin,
+  //Twitter,
 } from "lucide-react"; // Assuming lucide-react for icons
 import { cn } from "@/lib/utils"; // Assuming you have a utils file for cn
 import NavBar from "./components/NavBar/NavBar"; // Import NavBar
