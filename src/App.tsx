@@ -1,15 +1,16 @@
 import { useState, useEffect, ReactNode, useCallback } from "react";
-import { cn } from "@/lib/utils";
 import {
   Moon,
   Sun,
-  Code,
-  User,
-  FileText,
-  ExternalLink,
-  Github,
   Mail,
-} from "lucide-react";
+  FileText,
+  Github,
+  ExternalLink,
+  Linkedin,
+  Twitter,
+} from "lucide-react"; // Assuming lucide-react for icons
+import { cn } from "@/lib/utils"; // Assuming you have a utils file for cn
+import NavBar from "./components/NavBar/NavBar"; // Import NavBar
 
 // Define direction type to ensure type safety
 type AnimationDirection = "up" | "down" | "left" | "right";
@@ -130,40 +131,6 @@ const ThemeToggle = () => {
   );
 };
 
-// NavBar Components with hover effects
-type NavItemProps = {
-  active: boolean;
-  onClick: () => void;
-  children: ReactNode;
-  icon: ReactNode;
-  delay?: number;
-};
-
-const NavItem = ({
-  active,
-  onClick,
-  children,
-  icon,
-  delay = 0,
-}: NavItemProps) => {
-  return (
-    <AnimatedEntry delay={delay} direction="down">
-      <button
-        onClick={onClick}
-        className={cn(
-          "px-4 py-2 rounded-md transition-all duration-300 flex items-center gap-2 font-medium",
-          active
-            ? "bg-teal-500 text-white shadow-lg shadow-teal-500/20"
-            : "hover:bg-teal-100 hover:text-teal-800 dark:hover:bg-teal-900 dark:hover:text-teal-200"
-        )}
-      >
-        {icon}
-        <span>{children}</span>
-      </button>
-    </AnimatedEntry>
-  );
-};
-
 // Section Components
 const PatrikSection = () => {
   return (
@@ -174,7 +141,7 @@ const PatrikSection = () => {
           <div className="absolute -bottom-16 -right-8 w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
           <div className="absolute top-32 right-32 w-64 h-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
           <h1 className="text-6xl font-bold tracking-tight bg-gradient-to-br from-teal-600 to-blue-500 text-transparent bg-clip-text relative">
-            Patrik
+            Patrik Pukán
           </h1>
         </div>
       </AnimatedEntry>
@@ -191,16 +158,14 @@ const PatrikSection = () => {
         <div className="space-y-6 max-w-2xl">
           <AnimatedEntry delay={400}>
             <h2 className="text-2xl font-medium text-teal-500 dark:text-teal-300">
-              Frontend Developer & UI/UX Designer
+              Software Developer & Problem Solver
             </h2>
           </AnimatedEntry>
 
           <AnimatedEntry delay={600}>
             <p className="text-lg leading-relaxed">
-              I craft beautiful, interactive web experiences that delight users
-              and solve real-world problems. Specializing in TypeScript, React,
-              and modern UI frameworks, I blend technical expertise with
-              creative design thinking.
+              This site is currently under construction and information in it is
+              not factual. Please check back later for updates.
             </p>
           </AnimatedEntry>
 
@@ -633,50 +598,11 @@ const App = () => {
     >
       <GlobalStyles />
 
-      <header className="sticky top-0 z-10 backdrop-blur-lg bg-white/80 dark:bg-slate-900/80 border-b border-teal-100 dark:border-teal-900 shadow-sm">
-        <div className="container mx-auto py-4 px-4 flex justify-between items-center">
-          <AnimatedEntry>
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-teal-500 to-cyan-500 text-transparent bg-clip-text">
-              Patrik.dev
-            </h2>
-          </AnimatedEntry>
-
-          <div className="flex items-center gap-6">
-            <nav className="hidden md:flex gap-2">
-              <NavItem
-                active={activeSection === "patrik"}
-                onClick={() => setActiveSection("patrik")}
-                icon={<User className="w-4 h-4" />}
-                delay={100}
-              >
-                Patrik
-              </NavItem>
-              <NavItem
-                active={activeSection === "projects"}
-                onClick={() => setActiveSection("projects")}
-                icon={<Code className="w-4 h-4" />}
-                delay={200}
-              >
-                Projects
-              </NavItem>
-              <NavItem
-                active={activeSection === "about"}
-                onClick={() => setActiveSection("about")}
-                icon={<FileText className="w-4 h-4" />}
-                delay={300}
-              >
-                About Me
-              </NavItem>
-            </nav>
-
-            <AnimatedEntry delay={400}>
-              <ThemeToggle />
-            </AnimatedEntry>
-
-            {/* Mobile menu button would go here */}
-          </div>
-        </div>
-      </header>
+      <NavBar
+        activeSection={activeSection}
+        setActiveSection={setActiveSection}
+        themeToggleComponent={<ThemeToggle />}
+      />
 
       <main className="container mx-auto py-12 px-4">
         {activeSection === "patrik" && <PatrikSection />}
@@ -687,7 +613,7 @@ const App = () => {
       <footer className="border-t border-teal-100 dark:border-teal-900 mt-auto">
         <div className="container mx-auto py-8 px-4 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-600 dark:text-slate-300">
-            © {new Date().getFullYear()} Patrik.dev | Crafted with 💙 and React
+            © {new Date().getFullYear()} Pukan.tech | Crafted with 💙 and React
           </p>
           <div className="flex gap-6">
             <a
