@@ -6,8 +6,7 @@ import {
   FileText,
   Github,
   ExternalLink,
-  //Linkedin,
-  //Twitter,
+  Linkedin,
 } from "lucide-react"; // Assuming lucide-react for icons
 import { cn } from "@/lib/utils"; // Assuming you have a utils file for cn
 import NavBar from "./components/NavBar/NavBar"; // Import NavBar
@@ -124,9 +123,9 @@ const ThemeToggle = () => {
         )}
       </button>
 
-      <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">
+      {/* <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap">
         {theme === "system" ? "System" : theme === "dark" ? "Dark" : "Light"}
-      </span>
+      </span> */}
     </div>
   );
 };
@@ -195,6 +194,12 @@ const PatrikSection = () => {
                 className="p-2 text-teal-600 dark:text-teal-300 hover:text-teal-800 dark:hover:text-teal-100 transition-colors"
               >
                 <Mail className="w-6 h-6" />
+              </a>
+              <a
+                href="#"
+                className="p-2 text-teal-600 dark:text-teal-300 hover:text-teal-800 dark:hover:text-teal-100 transition-colors"
+              >
+                <Linkedin className="w-6 h-6" />
               </a>
               {/* Add more social icons as needed */}
             </div>
@@ -617,7 +622,7 @@ const App = () => {
           </p>
           <div className="flex gap-6">
             <a
-              href="#"
+              href="https://github.com/patrikpukan"
               className="text-slate-600 hover:text-teal-500 dark:text-slate-300 dark:hover:text-teal-300 transition-colors"
             >
               <Github className="w-5 h-5" />
@@ -627,6 +632,12 @@ const App = () => {
               className="text-slate-600 hover:text-teal-500 dark:text-slate-300 dark:hover:text-teal-300 transition-colors"
             >
               <Mail className="w-5 h-5" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/patrik-pukan/"
+              className="text-slate-600 hover:text-teal-500 dark:text-slate-300 dark:hover:text-teal-300 transition-colors"
+            >
+              <Linkedin className="w-5 h-5" />
             </a>
             {/* Add more social icons as needed */}
           </div>
