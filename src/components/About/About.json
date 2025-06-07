@@ -16,20 +16,30 @@
   ],
   "timeline": [
     {
-      "year": "2023",
-      "title": "Senior Frontend Developer",
-      "company": "Tech Solutions Inc."
+      "year": "2023-now",
+      "title": "Software Developer",
+      "company": "Česká Spořitelna"
     },
+    {
+      "year": "2024",
+      "title": "Graduated Bc. University",
+      "company": "Bc. Prague Univeristy of Economics and Business"
+    },
+    {
+      "year": "2022-2023",
+      "title": "Web Copywriter",
+      "company": "XiaomiPlanet"
+    },
+
     {
       "year": "2021",
-      "title": "UI/UX Designer & Developer",
+      "title": "QA Tester & Customer Support",
       "company": "Creative Studio"
     },
-    { "year": "2019", "title": "Web Developer", "company": "Digital Agency" },
     {
-      "year": "2018",
-      "title": "Graduated University",
-      "company": "BSc Computer Science"
+      "year": "2019-2021",
+      "title": "AI annotator",
+      "company": "HealthMode"
     }
   ]
 }

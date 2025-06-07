@@ -72,7 +72,7 @@ const AboutMeSection = () => {
 
           <AnimatedEntry delay={400}>
             <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-              With over 5 years of experience in web development, I've had the
+              With over 4 years of experience in software, I've had the
               opportunity to work on diverse projects across various industries,
               from e-commerce platforms to interactive dashboards and creative
               portfolios.
