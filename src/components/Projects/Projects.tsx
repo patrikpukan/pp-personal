@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import { Github, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils"; // Assuming you have a utils file for cn
+import projectsData from "./projects.json";
 
 // Define direction type to ensure type safety
 type AnimationDirection = "up" | "down" | "left" | "right";
@@ -111,50 +112,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 };
 
 const ProjectsSection = () => {
-  const projects = [
-    {
-      title: "E-commerce Platform",
-      description:
-        "A full-featured online shop with cart functionality, payment processing, and order management. Built with a focus on performance and user experience.",
-      tags: ["React", "TypeScript", "Node.js"],
-      image: "🛒",
-    },
-    {
-      title: "Task Management App",
-      description:
-        "Collaborative project management tool with real-time updates, task assignments, and progress tracking.",
-      tags: ["React", "Firebase", "Tailwind CSS"],
-      image: "📋",
-    },
-    {
-      title: "Weather Dashboard",
-      description:
-        "Interactive weather visualization with forecast data, historical trends, and location search functionality.",
-      tags: ["React", "Chart.js", "API Integration"],
-      image: "🌤️",
-    },
-    {
-      title: "Portfolio Website",
-      description:
-        "Modern, responsive developer portfolio showcasing projects and skills with interactive elements.",
-      tags: ["React", "Tailwind CSS", "Framer Motion"],
-      image: "🎨",
-    },
-    {
-      title: "Fitness Tracker",
-      description:
-        "Mobile-first application for tracking workouts, nutrition, and health metrics with progress visualization.",
-      tags: ["React Native", "TypeScript", "GraphQL"],
-      image: "💪",
-    },
-    {
-      title: "Recipe Finder",
-      description:
-        "Web application that helps users discover recipes based on available ingredients and dietary preferences.",
-      tags: ["React", "Redux", "API Integration"],
-      image: "🍲",
-    },
-  ];
+  const projects = projectsData;
 
   return (
     <div className="space-y-8 py-8">

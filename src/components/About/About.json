@@ -1,0 +1,35 @@
+{
+  "skills": [
+    {
+      "category": "Languages",
+      "items": ["TypeScript", "JavaScript", "HTML", "CSS", "Kotlin"]
+    },
+    {
+      "category": "Frameworks",
+      "items": ["React", "Next.js", "Express", "Tailwind CSS"]
+    },
+    { "category": "Tools", "items": ["Git", "Docker", "Figma", "VS Code"] },
+    {
+      "category": "Other",
+      "items": ["RESTful APIs", "GraphQL", "UI/UX Design", "Responsive Design"]
+    }
+  ],
+  "timeline": [
+    {
+      "year": "2023",
+      "title": "Senior Frontend Developer",
+      "company": "Tech Solutions Inc."
+    },
+    {
+      "year": "2021",
+      "title": "UI/UX Designer & Developer",
+      "company": "Creative Studio"
+    },
+    { "year": "2019", "title": "Web Developer", "company": "Digital Agency" },
+    {
+      "year": "2018",
+      "title": "Graduated University",
+      "company": "BSc Computer Science"
+    }
+  ]
+}

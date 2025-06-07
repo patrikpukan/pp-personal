@@ -1,0 +1,43 @@
+[
+  {
+    "title": "Financial Scoring Application",
+    "description": "Full stack application for financial scoring, data visualization and editing, and exporting.",
+    "tags": ["React", "TypeScript", "Node.js"],
+    "image": "💹"
+  },
+  {
+    "title": "Prague Metro App",
+    "description": "This app displays the Prague metro timetables and allows users to search for connections between stations.",
+    "tags": ["Kotlin", "Jetpack Compose", "Material You"],
+    "image": "🚇"
+  },
+  {
+    "title": "Weather Dashboard",
+    "description": "Interactive weather visualization with forecast data, historical trends, and location search functionality.",
+    "tags": ["React", "Chart.js", "API Integration"],
+    "image": "🌤️"
+  },
+  {
+    "title": "Portfolio Website",
+    "description": "Well, you are here now.",
+    "tags": ["React", "Tailwind CSS", "Framer Motion"],
+    "image": "🎨"
+  },
+  {
+    "title": "Materialify Music",
+    "description": "Android client for Spotify with Material You design, featuring a personalized music experience.",
+    "tags": [
+      "Kotlin",
+      "Jetpack Compose",
+      "Material You",
+      "Spotify Android API"
+    ],
+    "image": "🎵"
+  },
+  {
+    "title": "www.kmm.cz",
+    "description": "Rebranding of the Klub Mladých Manažerů website with a focus on modern design and user experience.",
+    "tags": ["React", "Redux", "API Integration"],
+    "image": "💙"
+  }
+]

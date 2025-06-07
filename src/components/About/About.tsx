@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useState } from "react";
 import { cn } from "@/lib/utils"; // Assuming you have a utils file for cn
+import data from "./About.json";
 
 // Define direction type to ensure type safety
 type AnimationDirection = "up" | "down" | "left" | "right";
@@ -44,40 +45,7 @@ const AnimatedEntry = ({
 };
 
 const AboutMeSection = () => {
-  const skills = [
-    {
-      category: "Languages",
-      items: ["TypeScript", "JavaScript", "HTML", "CSS", "Kotlin"],
-    },
-    {
-      category: "Frameworks",
-      items: ["React", "Next.js", "Express", "Tailwind CSS"],
-    },
-    { category: "Tools", items: ["Git", "Docker", "Figma", "VS Code"] },
-    {
-      category: "Other",
-      items: ["RESTful APIs", "GraphQL", "UI/UX Design", "Responsive Design"],
-    },
-  ];
-
-  const timeline = [
-    {
-      year: "2023",
-      title: "Senior Frontend Developer",
-      company: "Tech Solutions Inc.",
-    },
-    {
-      year: "2021",
-      title: "UI/UX Designer & Developer",
-      company: "Creative Studio",
-    },
-    { year: "2019", title: "Web Developer", company: "Digital Agency" },
-    {
-      year: "2018",
-      title: "Graduated University",
-      company: "BSc Computer Science",
-    },
-  ];
+  const { skills, timeline } = data;
 
   return (
     <div className="space-y-12 py-8">
